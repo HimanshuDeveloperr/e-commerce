@@ -1,12 +1,19 @@
-import {Button} from "react-bootstrap"
+
+import { Fragment } from 'react';
 import './App.css';
+import Grid from './Components/EssentialsLayout/Grid';
+import Header from "./Components/EssentialsLayout/Header";
+import Section from './Components/EssentialsLayout/Section';
+import Products from './Components/Products/Products';
 
 function App() {
   return (
-    <div>
-      <h1>e-commerce</h1>
-      <Button variant="primary">Primary</Button>
-    </div>
+    <Fragment>
+      <Header/>
+      <Grid/>
+      <Section/>
+      <Products/>
+    </Fragment>
   );
 }
 
