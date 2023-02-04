@@ -1,6 +1,5 @@
-import React from "react";
-import { Button, Modal,Card,Row,Col} from "react-bootstrap";
-
+import React ,{useState}from "react";
+import { Button, Modal } from "react-bootstrap";
 
 const cartElements = [
   {
@@ -33,7 +32,14 @@ const cartElements = [
     quantity: 1,
   },
 ];
+
 const Cart = (props) => {
+const [state,setState]= useState(cartElements)
+const deleteByIndex = index => {
+    setState(oldValues => {
+      return oldValues.filter((_, i) => i !== index)
+    })
+  }
   return (
     <div>
       <Modal
@@ -43,62 +49,62 @@ const Cart = (props) => {
         keyboard={props.keyboard}
       >
         <Modal.Header closeButton>
-          <Modal.Title> <h2 style={{ marginLeft: "40%" }}>Cart</h2>
-          <div>
-
-          <h3 style={{display:"inline-block" , textAlign:"left"}} className="m-4">items</h3>
-          <h3 style={{display:"inline-block",textAlign: "center"}} className="m-4">title</h3>
-          <h3 style={{display:"inline-block", textAlign:"right"}} className="m-4">price</h3>
-          </div>
+          <Modal.Title>
+            {" "}
+            <h2 style={{ marginLeft: "40%" }}>Cart</h2>
+            <div>
+              <h3
+                style={{ display: "inline-block", textAlign: "left" }}
+                className="m-4"
+              >
+                items
+              </h3>
+              <h3
+                style={{
+                  display: "inline-block",
+                  textAlign: "center",
+                  margin: "2.5rem",
+                }}
+              >
+                title
+              </h3>
+              <h3
+                style={{
+                  display: "inline-block",
+                  textAlign: "right",
+                  margin: "2.5rem",
+                }}
+              >
+                price
+              </h3>
+            </div>
           </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          {cartElements.map((ele) => (
-            // <Container key={Math.random()}>
-
-            //   <Row className="g-0" >
-
-            // <Card  style={{ width: "50%",marginLeft: "25%" }}>
-            //     <Col>
-            //   <Card.Title style={{ display: "block", textAlign: "center" }}>
-            //     {ele.title}
-            //     <span style={{ display: "block", textAlign: "center" }}>
-            //       ${ele.price} - {ele.quantity}
-            //     </span>
-            //   </Card.Title>
-            //   </Col>
-            //   <Col>
-            //   <Card.Body>
-            //     <Card.Img
-            //       alt="items in cart"
-            //       src={ele.imageUrl}
-            //       className="cardimg"
-            //     />
-            //   </Card.Body>
-            // </Col>
-            // </Card>
-            // </Row>
-            // </Container>
-            <Card style={{ maxWidth: '540px' }}>
-      <Row className='g-0'>
-        <Col md='4'>
-          <Card.Img src={ele.imageUrl} alt='...' fluid />
-        </Col>
-        <Col md='8'>
-          <Card.Body>
-            <Card.Title>{ele.title}</Card.Title>
-            <Card.Text>
-              {ele.price}  
-            </Card.Text>
-            <Card.Text>
-            {ele.quantity}
-            </Card.Text>
-          </Card.Body>
-        </Col>
-      </Row>
-    </Card>
-            
+          {state.map((ele,index) => (
+            <ul style={{ display: "flex" }} key={Math.random()}>
+              <li style={{ listStyle: "none" }}>
+                <span style={{ display: "flex" }} className="mt-lg-4">
+                  <img src={ele.imageUrl} style={{ width: "20%" }} alt="items"></img>
+                  <h4 style={{ width: "20%", marginLeft: "10%" }}>
+                    {ele.title}
+                  </h4>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginLeft: "5%",
+                      fontFamily: "fantasy",
+                    }}
+                  >
+                    {ele.quantity}
+                  </span>
+                  <div style={{ marginLeft: "10px" }}>
+                    <Button className="btn btn-danger p-2" onClick={() => deleteByIndex(index)}>Remove</Button>
+                  </div>
+                </span>
+              </li>
+            </ul>
           ))}
         </Modal.Body>
         <Modal.Footer>
