@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import Cart from "../Cart/Cart";
+import CartContext from "../Store/CartContext";
 
 const Header = () => {
+const context=useContext(CartContext)
+let quantity=0;
+context.products.forEach((product)=>{
+  quantity=quantity+Number(product.quantity)
+})
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const count = "0";
+   
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -23,7 +29,7 @@ const Header = () => {
         </Nav>
       </Container>
       <Button variant="outline-info" onClick={handleShow}>
-        Cart <span>{count}</span>{" "}
+        Cart <span>{quantity}</span>{" "}
       </Button>
       <Cart
         show={show}
