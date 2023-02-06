@@ -42,8 +42,8 @@ const Cart = (props) => {
 
   const hasItems=context.products.length>0;
 
-  const cartRemove=(index)=>{
-    context.removeItem(index)
+  const cartRemove=(ele)=>{
+    context.removeItem(ele)
   }
 
 
@@ -107,7 +107,7 @@ const Cart = (props) => {
                     {ele.quantity}
                   </span>
                   <div style={{ marginLeft: "10px" }}>
-                    <Button className="btn btn-danger p-2" onClick={()=>cartRemove(index)}>Remove</Button>
+                    <Button className="btn btn-danger p-2" onClick={()=>cartRemove(ele)}>Remove</Button>
                   </div>
                 </span>
               </li>
