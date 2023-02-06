@@ -1,5 +1,7 @@
-import React ,{useState}from "react";
+import React ,{useContext, useState}from "react";
 import { Button, Modal } from "react-bootstrap";
+
+import CartContext from "../Store/CartContext";
 
 const cartElements = [
   {
@@ -34,12 +36,17 @@ const cartElements = [
 ];
 
 const Cart = (props) => {
-const [state,setState]= useState(cartElements)
-const deleteByIndex = index => {
-    setState(oldValues => {
-      return oldValues.filter((_, i) => i !== index)
-    })
+  const context=useContext(CartContext)
+
+  const totalAmount= `${context.totalAmount.toFixed(2)}rs`
+
+  const hasItems=context.products.length>0;
+
+  const cartRemove=(index)=>{
+    context.removeItem(index)
   }
+
+
   return (
     <div>
       <Modal
@@ -81,9 +88,9 @@ const deleteByIndex = index => {
           </Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
-          {state.map((ele,index) => (
-            <ul style={{ display: "flex" }} key={Math.random()}>
+        <Modal.Body style={{ maxHeight:'20rem',overflow:'scroll'}}  >
+          {context.products.map((ele,index) => (
+            <ul style={{ display: "flex"}} key={Math.random()}>
               <li style={{ listStyle: "none" }}>
                 <span style={{ display: "flex" }} className="mt-lg-4">
                   <img src={ele.imageUrl} style={{ width: "20%" }} alt="items"></img>
@@ -100,7 +107,7 @@ const deleteByIndex = index => {
                     {ele.quantity}
                   </span>
                   <div style={{ marginLeft: "10px" }}>
-                    <Button className="btn btn-danger p-2" onClick={() => deleteByIndex(index)}>Remove</Button>
+                    <Button className="btn btn-danger p-2" onClick={()=>cartRemove(index)}>Remove</Button>
                   </div>
                 </span>
               </li>
@@ -108,10 +115,13 @@ const deleteByIndex = index => {
           ))}
         </Modal.Body>
         <Modal.Footer>
+          <div style={{textAlign:"center"}} className="m-3"><h3>TOTAL AMOUNT</h3>
+          <h4 style={{color:"lightcoral"}}>{totalAmount}</h4>
+          </div>
           <Button variant="secondary" onClick={props.onClick}>
             Close
           </Button>
-          <Button variant="primary">purchase</Button>
+         {hasItems && <Button variant="success">PURCHASE</Button>}
         </Modal.Footer>
       </Modal>
     </div>

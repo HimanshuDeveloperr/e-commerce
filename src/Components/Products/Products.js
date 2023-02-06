@@ -43,22 +43,30 @@ const productsArr = [
 ];
 
 const Products = () => {
+const context=useContext(CartContext)
+const submitHandler=(event)=>{
+  event.preventDefault()
+}
+const addItemToCart=(product)=>{
+  console.log(product)
+  context.addItem({
+    title:product.title,
+    id:product.id,
+    quantity:1,
+    imageUrl:product.imageUrl,
+    price:product.price
+  })
 
-  const context=useContext(CartContext)
-  const addItemToCart=(event)=>{
-    event.preventDefault()
-    const quantity=1
-    context.addItem({...productsArr,quantity:quantity})
-  }
+}
   return <React.Fragment>
   {productsArr.map((product)=>(
-    <form style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }} className="m-3" >
+    <form style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }} className="m-3" onSubmit={submitHandler}>
         <Card className="shadow-lg m-5" key={Math.random()} style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }}>
             <Card.Img variant="top"  src={product.imageUrl} ></Card.Img>
             <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>{product.price}</Card.Text>
-            <Button variant="primary" onClick={addItemToCart}>Add To Cart</Button>
+            <Button variant="primary" onClick={()=>addItemToCart(product)}>Add To Cart</Button>
 
             </Card.Body>
         
