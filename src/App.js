@@ -1,20 +1,22 @@
 
  import React from 'react'
+import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import './App.css';
-import Grid from './Components/EssentialsLayout/Grid';
-import Header from "./Components/EssentialsLayout/Header";
-import Section from './Components/EssentialsLayout/Section';
-import Products from './Components/Products/Products';
-import CartProvider from './Components/Store/CartProvider';
+import Store from './Components/Routes/Store';
+import About from "./Components/Routes/About"
+import Home from "./Components/Routes/Home"
+
+const router=createBrowserRouter([
+  {path:"/",element:<Store/>},
+  {path:"/about",element:<About/>},
+  {path:"/home",element:<Home/>},
+  {path:"/store", element:<Store/>}
+])
+
 
 function App() {
   return (
-    <CartProvider>
-      <Header/>
-      <Grid/>
-      <Section/>
-      <Products/>
-    </CartProvider>
+    <RouterProvider router={router}/>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar} from "react-bootstrap";
+import {NavLink} from "react-router-dom"
 import Cart from "../Cart/Cart";
 import CartContext from "../Store/CartContext";
 
@@ -22,15 +23,13 @@ const context=useContext(CartContext)
     <Navbar bg="dark" variant="dark">
       <Container>
         <Nav className="m-auto">
-          <Nav.Item className="m-3">
-            <Nav.Link>Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="m-3">
-            <Nav.Link>Store</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="m-3">
-            <Nav.Link>About</Nav.Link>
-          </Nav.Item>
+          
+            <NavLink className="m-3" to="/home">Home</NavLink>
+
+            <NavLink className="m-3" to="/store">Store</NavLink>
+          
+            <NavLink className="m-3" to="/about">About</NavLink>
+          
         </Nav>
       </Container>
       <Button variant="outline-info" onClick={handleShow}>

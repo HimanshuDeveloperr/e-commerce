@@ -60,7 +60,7 @@ const addItemToCart=(product)=>{
 }
   return <React.Fragment>
   {productsArr.map((product)=>(
-    <form style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }} className="m-3" onSubmit={submitHandler}>
+    <form style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }} className="m-3" onSubmit={submitHandler} key={Math.random()} >
         <Card className="shadow-lg m-5" key={Math.random()} style={{ width: '18rem',display: "inline-block", flexWrap: "wrap" }}>
             <Card.Img variant="top"  src={product.imageUrl} ></Card.Img>
             <Card.Body>
