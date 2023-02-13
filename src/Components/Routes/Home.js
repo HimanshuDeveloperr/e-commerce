@@ -1,7 +1,8 @@
 import React ,{Fragment}from 'react'
 import { Container, Nav, Navbar} from "react-bootstrap";
-import Grid from '../EssentialsLayout/Grid'
 import {NavLink} from "react-router-dom"
+import Footer from '../EssentialsLayout/Footer';
+import HomeGrid from './HomeGrid';
 
 const Home = () => {
   return (
@@ -11,17 +12,20 @@ const Home = () => {
         <Container>
           <Nav className="m-auto">
             
-              <NavLink className="m-3" to="/home">Home</NavLink>
+              <NavLink className="m-3" to="/home" style={{color:'orange',textDecorationColor:'whitesmoke'}}>Home</NavLink>
   
-              <NavLink className="m-3" to="/store">Store</NavLink>
+              <NavLink className="m-3" to="/store" style={{color:'orange',textDecorationColor:'whitesmoke'}}>Store</NavLink>
             
-              <NavLink className="m-3" to="/about">About</NavLink>
+              <NavLink className="m-3" to="/about" style={{color:'orange',textDecorationColor:'whitesmoke'}}>About</NavLink>
             
           </Nav>
         </Container>
       </Navbar>
-      
-      <Grid/>
+      <HomeGrid/>
+<div style={{marginTop:"50px"}}>
+
+      <Footer/>
+</div>
       </Fragment>
   )
 }

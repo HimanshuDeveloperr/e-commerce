@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../EssentialsLayout/Footer';
 import Grid from '../EssentialsLayout/Grid';
 import Header from '../EssentialsLayout/Header';
 import Section from '../EssentialsLayout/Section';
@@ -14,6 +15,7 @@ const Store = () => {
          <Grid></Grid>
          <Section/>
          <Products></Products>
+         <Footer/>
    </CartProvider>
   
     
