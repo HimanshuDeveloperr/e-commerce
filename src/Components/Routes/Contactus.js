@@ -1,7 +1,11 @@
-import React, { useRef } from 'react'
+import React, { Fragment, useRef } from 'react'
 import { Form,Button } from 'react-bootstrap'
+import Grid from '../EssentialsLayout/Grid'
+import { NavLink } from 'react-router-dom'
+import { Nav,Container,Navbar } from 'react-bootstrap'
 
 import "./ContactUs.css"
+import Footer from '../EssentialsLayout/Footer'
 
 const Contactus = () => {
 
@@ -36,8 +40,27 @@ const Contactus = () => {
 
    }
   return (
-    <div className='m-5' >
-         <Form onSubmit={SubmitHandler}>
+    <Fragment >
+        <Navbar bg="dark" variant="dark">
+      <Container>
+        <Nav className="m-auto">
+          
+            <NavLink className="m-3" to="/home" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Home</NavLink>
+
+            <NavLink className="m-3" to="/store" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Store</NavLink>
+          
+            <NavLink className="m-3" to="/about" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>About</NavLink>
+
+            
+            <NavLink className="m-3" to="/contactus" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Contact Us</NavLink>
+          
+        </Nav>
+      </Container>
+    </Navbar>
+    
+    <Grid/>
+
+         <Form onSubmit={SubmitHandler} className="m-3">
 
          <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label style={{color:"green"}}>Name</Form.Label>
@@ -57,7 +80,8 @@ const Contactus = () => {
         Submit
       </Button>
     </Form>
-    </div>
+    <Footer/>
+    </Fragment>
   )
 }
 
