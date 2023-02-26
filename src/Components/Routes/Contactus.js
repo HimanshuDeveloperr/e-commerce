@@ -1,11 +1,10 @@
 import React, { Fragment, useRef } from 'react'
 import { Form,Button } from 'react-bootstrap'
-import Grid from '../EssentialsLayout/Grid'
 import { NavLink } from 'react-router-dom'
 import { Nav,Container,Navbar } from 'react-bootstrap'
 
 import "./ContactUs.css"
-import Footer from '../EssentialsLayout/Footer'
+
 
 const Contactus = () => {
 
@@ -58,7 +57,7 @@ const Contactus = () => {
       </Container>
     </Navbar>
     
-    <Grid/>
+
 
          <Form onSubmit={SubmitHandler} className="m-3">
 
@@ -80,7 +79,7 @@ const Contactus = () => {
         Submit
       </Button>
     </Form>
-    <Footer/>
+
     </Fragment>
   )
 }
