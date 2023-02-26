@@ -7,6 +7,8 @@ import About from "./Components/Routes/About"
 import Home from "./Components/Routes/Home"
 import ErrorPage from './Components/Routes/ErrorPage';
 import Contactus from './Components/Routes/Contactus';
+import ProductsOnly from './Components/Routes/ProductsOnly';
+import ProductDetails from './Components/Routes/ProductDetails';
 
 
 const router=createBrowserRouter([
@@ -14,7 +16,9 @@ const router=createBrowserRouter([
   {path:"/about",element:<About/>},
   {path:"/home",element:<Home/>},
   {path:"/store", element:<Store/>},
-  {path:"/contactus",element:<Contactus/>}
+  {path:"/contactus",element:<Contactus/>},
+  {path:"/products",element:<ProductsOnly/>},
+  {path:"/Product-Details",element:<ProductDetails/>}
 ])
 
 
