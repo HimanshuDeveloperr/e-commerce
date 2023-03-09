@@ -55,6 +55,7 @@ const authctx=useContext(TokenContesxt)
         console.log(data)
         history("/store")
         authctx.login(data.idToken)
+        localStorage.setItem("email",data.email)
     }).catch((error)=>{
         alert(error.message)
     })

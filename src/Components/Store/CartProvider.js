@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useReducer } from "react"
 import CartContext from "./CartContext"
+
 
 
 const defaultState = {
@@ -26,25 +28,27 @@ const cartReducer = (state, action) => {
             }
 
         }
-
-
-
-
-
+      
+        
+        
+        
+        
+        
+        
         return {
             products: update,
             totalAmount: updatedAmount
         }
     }else if (action.type === "REMOVE"){
         const updatedAmount = state.totalAmount - action.value.price * action.value.quantity;
-      const updatedProducts = state.products.filter(product => product.id !== action.value.id)
-
-      return {
-                   products: updatedProducts,
-                    totalAmount: updatedAmount
-               }
+        const updatedProducts = state.products.filter(product => product.id !== action.value.id)
+        
+        return {
+            products: updatedProducts,
+            totalAmount: updatedAmount
+        }
     }
-
+    
     
     return defaultState
 }
@@ -52,14 +56,25 @@ const cartReducer = (state, action) => {
 
 const CartProvider = (props) => {
     const [state, dispatchFN] = useReducer(cartReducer, defaultState)
-
-
+    
+    
     const addProductHandler = (product) => {
         dispatchFN({
             type: "ADD",
             value: product
-
+            
         })
+        
+        const email=localStorage.getItem("email")
+        const userEmail = email.replace(/[@.]/g, "");//removed . and @
+              console.log(userEmail); 
+              const url=`https://crudcrud.com/api/be23a9932e584f50887a83d66aa0a56f/Cart${userEmail}`
+        
+              axios.post(url,product).then((res)=>{
+                console.log(res.data)
+              }).catch((err)=>{
+                console.log(err)
+              })
     }
 
     
@@ -70,6 +85,7 @@ const CartProvider = (props) => {
             value:product
         })
     }
+    
 
 
     const Cart = {

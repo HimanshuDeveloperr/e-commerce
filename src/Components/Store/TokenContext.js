@@ -30,7 +30,8 @@ export const TokenContesxtProvider=(props)=>{
         token:token,
         isLoggedIn:userIsLoggedIn,
         login:loginHandler,
-        logout:logoutHandler
+        logout:logoutHandler,
+        
     }
 
     return <TokenContesxt.Provider value={value}>{props.children}</TokenContesxt.Provider>
