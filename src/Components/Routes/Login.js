@@ -1,6 +1,7 @@
-import React, { useRef,useState} from 'react';
+import React, { useContext, useRef,useState} from 'react';
 import "./login.css"
 import { useNavigate } from "react-router-dom";
+import TokenContesxt from '../Store/TokenContext';
 
 
 const Login = () => {
@@ -8,6 +9,8 @@ const Login = () => {
   const passwordRef=useRef("")
   const [isLogin, setIsLogin] = useState(true);
 const history=useNavigate()
+
+const authctx=useContext(TokenContesxt)
 
   const switchLoginModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -50,7 +53,8 @@ const history=useNavigate()
         }
     }).then((data)=>{
         console.log(data)
-        history("/products")
+        history("/store")
+        authctx.login(data.idToken)
     }).catch((error)=>{
         alert(error.message)
     })
@@ -60,7 +64,8 @@ const history=useNavigate()
 
   return (
     <div>
-      <h1>{isLogin? "Login" :"SignUp" }</h1>
+      <h1>welcome to my e-commerce website</h1>
+      <h1>{isLogin? "Please Login to buy" :"Please SignUp to get access" }</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Email:

@@ -34,7 +34,7 @@ const context=useContext(CartContext)
 
             <NavLink className="m-3" to="/Products" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Products</NavLink>
 
-            <NavLink className="m-3" to="/Login" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Login</NavLink>
+            <NavLink className="m-3" to="/Logout" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Logout</NavLink>
           
         </Nav>
       </Container>

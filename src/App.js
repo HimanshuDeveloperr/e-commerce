@@ -10,17 +10,18 @@ import Contactus from './Components/Routes/Contactus';
 import ProductsOnly from './Components/Routes/ProductsOnly';
 import ProductDetails from './Components/Routes/ProductDetails';
 import Login from './Components/Routes/Login';
+import Logout from './Components/Routes/Logout';
 
 
 const router=createBrowserRouter([
-  {path:"/",element:<Store/>,errorElement:<ErrorPage/>},
+  {path:"/",element:<Login/>,errorElement:<ErrorPage/>},
   {path:"/about",element:<About/>},
   {path:"/home",element:<Home/>},
   {path:"/store", element:<Store/>},
   {path:"/contactus",element:<Contactus/>},
   {path:"/products",element:<ProductsOnly/>},
   {path:"/Product-Details/:Id",element:<ProductDetails/>},
-  {path:"/Login",element:<Login/>}
+  {path:"/Logout",element:<Logout/>}
 ])
 
 
