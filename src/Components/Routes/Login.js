@@ -1,10 +1,13 @@
 import React, { useRef,useState} from 'react';
 import "./login.css"
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const emailRef=useRef("")
   const passwordRef=useRef("")
   const [isLogin, setIsLogin] = useState(true);
+const history=useNavigate()
 
   const switchLoginModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -47,6 +50,7 @@ const Login = () => {
         }
     }).then((data)=>{
         console.log(data)
+        history("/products")
     }).catch((error)=>{
         alert(error.message)
     })
