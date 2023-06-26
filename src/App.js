@@ -14,9 +14,9 @@ import Logout from './Components/Routes/Logout';
 
 
 const router=createBrowserRouter([
-  {path:"/",element:<Login/>,errorElement:<ErrorPage/>},
+  {path:"/login",element:<Login/>,errorElement:<ErrorPage/>},
   {path:"/about",element:<About/>},
-  {path:"/home",element:<Home/>},
+  {path:"/",element:<Home/>},
   {path:"/store", element:<Store/>},
   {path:"/contactus",element:<Contactus/>},
   {path:"/products",element:<ProductsOnly/>},
