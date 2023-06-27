@@ -8,7 +8,7 @@ const RootLayout = () => {
       <Container>
         <Nav className="m-auto">
           
-            <NavLink className="m-3" to="/home">Home</NavLink>
+            <NavLink className="m-3" to="/">Home</NavLink>
 
             <NavLink className="m-3" to="/store">Store</NavLink>
           
