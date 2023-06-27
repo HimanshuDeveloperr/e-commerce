@@ -12,7 +12,7 @@ const About = () => {
       <Container>
         <Nav className="m-auto">
           
-            <NavLink className="m-3" to="/home" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Home</NavLink>
+            <NavLink className="m-3" to="/" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Home</NavLink>
 
             <NavLink className="m-3" to="/store" style={{color:'orange',textDecorationColor:'whitesmoke',textDecoration:'none'}}>Store</NavLink>
           
